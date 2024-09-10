@@ -26,7 +26,14 @@ public class ComputerInventoryClient {
             computer.setUserHome(System.getProperty("user.home"));
             computer.setJavaVersion(System.getProperty("java.version"));
             computer.setTotalPhysicalMemory(getTotalPhysicalMemory());
-        } catch (IOException e) {
+
+            out.writeObject(computer);
+            out.flush();
+
+            String response = (String) in.readObject();
+            System.out.println("Server response: " + response);
+
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

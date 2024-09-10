@@ -16,7 +16,7 @@ public class ComputerInventoryApplication {
     @Bean
     CommandLineRunner startComputerInventoryServer(ComputerInventoryServer server) {
         return args -> {
-            ComputerInventoryServer.startServer();
+            server.startServer();
         };
     }
 }
